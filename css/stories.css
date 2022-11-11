@@ -37,3 +37,11 @@
 .story-user {
   display: block;
 }
+.story-form button {margin-left: 100px;}
+
+.heart:hover {cursor: pointer;}
+.heart.favorited i {color:rgb(217, 3, 3);}
+span.heart {
+  min-width: 13px;
+  display: inline-block;
+}

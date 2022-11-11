@@ -39,6 +39,7 @@
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
+    <a class="nav-link" href="#" id="nav-story-submit">submit</a>
     <a class="nav-link" href="#" id="nav-user-profile"></a>
     <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
@@ -93,6 +94,28 @@
       <input id="signup-password" autocomplete="new-password" type="password">
     </div>
     <button type="submit">create account</button>
+  </form>
+</section>
+
+<section class="story-submit-form-container container">
+
+  <!-- Story form -->
+  <form action="#" id="story-form" class="story-form hidden" method="post">
+    <h4>Story</h4>
+    <div class="story-input">
+      <label for="story-title">Story Title</label>
+      <input id="story-title">
+    </div>
+    <div class="story-input">
+      <label for="story-author">Story Author</label>
+      <input id="story-author">
+    </div>
+    <div class="story-input">
+      <label for="story-url">Story URL</label>
+      <input id="story-url">
+    </div>
+    <button type="submit">submit</button>
+    <hr>
   </form>
 </section>
 
