@@ -24,8 +24,11 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    const url = this.url;
+    const urlSansProtocol = url.replace(/https?:\/\/(www\.)?/, '');
+    const urlSansPerma = urlSansProtocol.replace(/\/(.+)?/, '');
+    const urlSansQuery = urlSansPerma.replace(/\?(.+)?/, '');
+    return urlSansQuery;
   }
 }
 
@@ -84,6 +87,26 @@ class StoryList {
     this.stories.unshift(addedStory);
     user.ownStories.unshift(addedStory);
     return addedStory;
+
+  }
+  async removeStory(user, nixedStoryId) {
+    const response = await axios({
+      url: `${BASE_URL}/stories/${nixedStoryId}`,
+      method: "Delete",
+      data: {token: user.loginToken}
+    });
+
+    const removedStory = new Story(response.data.story);
+    this.stories = this.stories.filter((story) => {
+     return story.storyId != removedStory.storyId;
+    });    
+    user.ownStories = user.ownStories.filter((story) => {
+      return story.storyId != removedStory.storyId;
+    });
+    user.favorites = user.favorites.filter((story) => {
+      return story.storyId != removedStory.storyId;
+    });
+    return removedStory;
 
   }
 }
@@ -207,7 +230,6 @@ class User {
   async addFavorite(story){    
     this.favorites.unshift(story);
     const username = this.username;
-    console.log(this.loginToken);
     await axios({
       url: `${BASE_URL}/users/${username}/favorites/${story.storyId}`,
       method: "POST",
@@ -217,7 +239,6 @@ class User {
   async removeFavorite(story){    
     this.favorites = this.favorites.filter(nixedStory => nixedStory.storyId !== story.storyId);
     const username = this.username;
-    console.log(this.loginToken);
     await axios({
       url: `${BASE_URL}/users/${username}/favorites/${story.storyId}`,
       method: "DELETE",

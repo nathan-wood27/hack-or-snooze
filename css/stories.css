@@ -2,12 +2,16 @@
 
 .stories-list {
   margin: 20px 5px;
+  overflow:hidden;
 }
 
 .stories-list > li {
   color: gray;
   font-size: 0.8rem;
   margin: 10px 0;
+  position: relative;
+  left: 0px;
+  transition: left 300ms;
 }
 
 #stories-loading-msg {
@@ -39,9 +43,11 @@
 }
 .story-form button {margin-left: 100px;}
 
-.heart:hover {cursor: pointer;}
+.heart:hover, .trash:hover {cursor: pointer;}
 .heart.favorited i {color:rgb(217, 3, 3);}
 span.heart {
   min-width: 13px;
   display: inline-block;
 }
+
+.stories-list > li.trashing {left: 200%;}

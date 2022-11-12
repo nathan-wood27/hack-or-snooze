@@ -32,7 +32,8 @@ function updateNavOnLogin() {
   $(".main-nav-links").show();
   $navLogin.hide();
   $navLogOut.show();
-  $navUserProfile.text(`${currentUser.username}`).show();
+  $navUserProfile.text(`User: ${currentUser.username}`).show();  
+  $loggedInNav.show();
 }
 
 $navStorySubmit.on("click", navSubmitStoryClick);
@@ -43,3 +44,13 @@ function navSubmitStoryClick() {
   $storySubmitForm.show();
   
 }
+
+$navStoryFavorites.on("click", () => {
+  hidePageComponents();
+  getAndShowStoriesFromCurrUser('favorites');
+});
+$navStoryMySubmissions.on("click", () => {
+  hidePageComponents();
+  mySubmissionsShowing = true;
+  getAndShowStoriesFromCurrUser('ownStories');
+});

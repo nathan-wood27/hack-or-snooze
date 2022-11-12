@@ -11,11 +11,15 @@ const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
 
 const $navLogin = $("#nav-login");
+const $loggedInNav = $("#logged-in-nav");
 const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");
 const $navStorySubmit = $('#nav-story-submit');
+const $navStoryFavorites = $('#nav-story-favorites');
+const $navStoryMySubmissions = $('#nav-story-my-submissions');
 
 const $storySubmitForm = $('#story-form');
+
 
 /** To make it easier for individual components to show just themselves, this
  * is a useful function that hides pretty much everything on the page. After
@@ -29,7 +33,8 @@ function hidePageComponents() {
     $signupForm,
     $storySubmitForm,
   ];
-  components.forEach(c => c.hide());
+  components.forEach(c => c.hide());  
+  mySubmissionsShowing = false;
 }
 
 /** Overall function to kick off the app. */

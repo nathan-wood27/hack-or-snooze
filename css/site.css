@@ -1,5 +1,5 @@
 /* General typography */
-
+* {box-sizing: border-box;}
 body {
   font-family: Arimo, sans-serif;
   margin: 8px 7.5vw;
